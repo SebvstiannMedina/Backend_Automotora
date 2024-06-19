@@ -1,0 +1,51 @@
+/*Img Navbar*/
+.container-fluid{
+    img{
+      width: 120px;
+      height: 100px;
+    }
+  }
+  /* Aqui termina */
+  
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand img {
+    width: 100px;
+    height: auto;
+}
+
+.card {
+    border: none;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0;
+}
+
+.card-title {
+    margin: 0;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: 10px;
+}
