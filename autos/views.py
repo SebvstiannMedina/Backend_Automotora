@@ -1,12 +1,10 @@
-from django.shortcuts import render
-
-# Create your views here.
+from django.shortcuts import render, get_object_or_404
+from .models import Auto
 
 def index(request):
-    context={}
-    return render(request, 'autos/index.html', context)
+    autos = Auto.objects.all()
+    return render(request, 'autos/index.html', {'autos': autos})
 
-def agrega(request):
-    context={}
-    return render(request, 'autos/agrega.html', context)
-
+def detalle(request, auto_id):
+    auto = get_object_or_404(Auto, pk=auto_id)
+    return render(request, 'autos/detalle.html', {'auto': auto})
