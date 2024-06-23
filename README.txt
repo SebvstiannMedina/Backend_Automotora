@@ -11,6 +11,8 @@ python.exe -m pip install --upgrade pip  ------->Hago un upgrade
 
 django-admin startproject automotora . -------> creo carpetas con py necesarios
 
+ls -----> veo carpetas
+
 python manage.py startapp autos ------> creo la carpeta de otra cosa
 
 python manage.py runserver
