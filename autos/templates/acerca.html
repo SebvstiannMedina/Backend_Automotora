@@ -90,12 +90,12 @@
       width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"></iframe></center>
 
-  <!-- Final de la página -->
+  <!--Final de la pagina -->
   <footer class="bg-dark py-5">
     <div class="container">
       <div class="row text-white g-4">
         <div class="col-md-6 col-lg-3">
-          <a class="text-uppercase text-decoration-none brand text-white" href="{% url 'autos:index' %}">AUTOSDELMAR</a>
+          <a class="text-uppercase text-decoration-none brand text-white" href="{% url 'autos:index' %}">RTD</a>
           <p class="text-white text-muted mt-3">En Autos del mar, nos especializamos en ofrecerte lo mejor en vehículos
             nuevos y usados. Con sede en Huechuraba, Región Metropolitana, estamos comprometidos a proporcionarte una
             experiencia única de compra en línea para los amantes de los automóviles. Explora nuestra selección
@@ -118,6 +118,11 @@
             <li class="my-3">
               <a href="{% url 'autos:cuenta' %}" class="text-white text-decoration-none text-muted">
                 <i class="fas fa-chevron-right me-1"></i> Cuenta
+              </a>
+            </li>
+            <li class="my-3">
+              <a href="{% url 'autos:noticias' %}" class="text-white text-decoration-none text-muted">
+                <i class="fas fa-chevron-right me-1"></i> Ultimas noticias
               </a>
             </li>
           </ul>
@@ -155,7 +160,26 @@
           <h5 class="fw-light mb-3">Nuestras Redes</h5>
           <div>
             <ul class="list-unstyled d-flex">
-              <!-- Aquí tus enlaces a redes sociales -->
+              <li>
+                <a href="https://www.facebook.com" class="text-white text-decoration-none text-muted fs-4 me-4">
+                  <i class="fab fa-facebook-f" style="color: #0866FF;"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/" class="text-white text-decoration-none text-muted fs-4 me-4">
+                  <i class="fab fa-twitter" style="color: #1C96E8;"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/" class="text-white text-decoration-none text-muted fs-4 me-4">
+                  <i class="fab fa-instagram" style="color: #FE087B;"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.pinterest.cl/" class="text-white text-decoration-none text-muted fs-4 me-4">
+                  <i class="fab fa-pinterest" style="color: #E60023;"></i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

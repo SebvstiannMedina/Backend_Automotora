@@ -16,4 +16,5 @@ urlpatterns = [
     path('suv/', views.suv, name='suv'),
     path('noticias/', views.noticias, name='noticias'),
     path('registro_mante/', views.registro_mantenimiento, name='registro_mante'),
+    path('apivalores/', views.apivalores, name='apivalores'),
 ]

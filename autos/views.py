@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import Auto
 
@@ -68,3 +68,6 @@ def registro_mantenimiento(request):
         return redirect('autos:index')
     else:
         return render(request, 'mantencion.html')
+
+def apivalores(request):
+    return render(request, 'apivalores.html')
