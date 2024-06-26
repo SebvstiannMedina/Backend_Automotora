@@ -1,17 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import Auto
+from .models import Auto, Producto
 
 class RegistroMantenimientoView(View):
     def get(self, request):
-        # Aquí puedes agregar la lógica necesaria para obtener los registros de mantenimiento
         registros = [
             {'nombre': 'Juan Pérez', 'fecha': '2024-06-25', 'modelo': 'Nissan', 'tipo': 'Sedan'},
             {'nombre': 'María García', 'fecha': '2024-06-24', 'modelo': 'Kia', 'tipo': 'Hatchback'},
-            # Agrega más registros según sea necesario
         ]
         return render(request, 'registro_mantenimiento.html', {'registros': registros})
-    
+
 class AcercaView(View):
     def get(self, request):
         return render(request, 'acerca.html')
@@ -30,7 +28,11 @@ class MantencionView(View):
 
 class ProductosView(View):
     def get(self, request):
-        return render(request, 'productos.html')
+        return render(request, 'usuario/productos.html')
+    
+class agregaView(View):
+    def get(self, request):
+        return render(request, 'admin/agrega.html')
 
 def index(request):
     autos = Auto.objects.all()
@@ -63,11 +65,45 @@ def cuenta(request):
 
 def registro_mantenimiento(request):
     if request.method == 'POST':
-        # Aquí irá la lógica para procesar el formulario de registro de mantenimiento
-        # Por ahora, simplemente redireccionaremos a la página de inicio
         return redirect('autos:index')
     else:
         return render(request, 'mantencion.html')
 
 def apivalores(request):
     return render(request, 'apivalores.html')
+
+def productos(request):
+    return render(request, 'usuario/productos.html')
+
+def agrega(request):
+    return render(request, 'admin/agrega.html')
+
+class ProductoListView(View):
+    def get(self, request):
+        productos = Producto.objects.all()
+        return render(request, 'agregar_editar_eliminar.html', {'productos': productos})
+
+class ManageProductView(View):
+    def post(self, request):
+        action = request.POST.get('action')
+        
+        if action == 'add':
+            nombre = request.POST.get('nombre_del_producto')
+            valor = request.POST.get('valor_del_producto')
+            existencia = request.POST.get('existencia_del_producto')
+            url_imagen = request.POST.get('url_imagen')
+            Producto.objects.create(nombre=nombre, valor=valor, existencia=existencia, url_imagen=url_imagen)
+        
+        elif action == 'edit':
+            producto_id = request.POST.get('producto_a_editar')
+            atributo = request.POST.get('atributo_a_editar')
+            nuevo_valor = request.POST.get('nuevo_valor')
+            producto = Producto.objects.get(id=producto_id)
+            setattr(producto, atributo, nuevo_valor)
+            producto.save()
+        
+        elif action == 'delete':
+            producto_id = request.POST.get('producto_a_eliminar')
+            Producto.objects.get(id=producto_id).delete()
+
+        return redirect('autos:producto_list')

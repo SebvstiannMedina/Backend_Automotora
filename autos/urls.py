@@ -17,4 +17,7 @@ urlpatterns = [
     path('noticias/', views.noticias, name='noticias'),
     path('registro_mante/', views.registro_mantenimiento, name='registro_mante'),
     path('apivalores/', views.apivalores, name='apivalores'),
+    path('productos/', views.ProductosView.as_view(), name='productos'),
+    path('agrega/', views.agregaView.as_view(), name='agrega'),
+    path('manage_product/', views.ManageProductView.as_view(), name='manage_product'),
 ]
