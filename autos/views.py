@@ -122,3 +122,6 @@ def kiasportage(request):
 
 def toyotarav4(request):
     return render(request, 'toyotarav4.html')
+
+def hyundaisantafe(request):
+    return render(request, 'hyundaisantafe.html')
