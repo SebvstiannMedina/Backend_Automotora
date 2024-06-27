@@ -24,5 +24,10 @@ urlpatterns = [
     path('hyundaisantafe/', views.hyundaisantafe, name='hyundaisantafe'),
     path('kiasportage/', views.kiasportage, name='kiasportage'),
     path('toyotarav4/', views.toyotarav4, name='toyotarav4'),
-    path('hyundaisantafe/', views.hyundaisantafe, name='hyundaisantafe')
+    path('hyundaisantafe/', views.hyundaisantafe, name='hyundaisantafe'),
+    path('hondacivic/', views.hondacivic, name='hondacivic'),
+    path('sedan/', views.sedan, name='sedan'),
+    path('hyundaielantra/', views.hyundaielantra, name='hyundaielantra'),
+    path('kiacerato/', views.kiacerato, name='kiacerato'),
+    path('toyotacorolla/', views.toyotacorolla, name='toyotacorolla'),
 ]

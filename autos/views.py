@@ -125,3 +125,18 @@ def toyotarav4(request):
 
 def hyundaisantafe(request):
     return render(request, 'hyundaisantafe.html')
+
+def sedan(request):
+    return render(request, 'sedan.html')
+
+def hondacivic(request):
+    return render(request, 'hondacivic.html')
+
+def hyundaielantra(request):
+    return render(request, 'hyundaielantra.html')
+
+def kiacerato(request):
+    return render(request, 'kiacerato.html')
+
+def toyotacorolla(request):
+    return render(request, 'toyotacorolla.html')
