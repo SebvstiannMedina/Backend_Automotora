@@ -107,3 +107,18 @@ class ManageProductView(View):
             Producto.objects.get(id=producto_id).delete()
 
         return redirect('autos:producto_list')
+    
+def registro(request):
+    return render(request, 'registro.html')
+
+def bmwx5(request):
+    return render(request, 'bmwx5.html')
+
+def hyundaisantafe(request):
+    return render(request, 'hyundaisantafe.html')
+
+def kiasportage(request):
+    return render(request, 'kiasportage.html')
+
+def toyotarav4(request):
+    return render(request, 'toyotarav4.html')

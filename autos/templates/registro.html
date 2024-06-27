@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="assets/css/registro.css">
-    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="{% static 'assets/css/registro.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
@@ -14,8 +15,8 @@
    <!--NAVBAR -->
    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="./assets/IMG/Logo.webp" alt="AUTOSDELMAR">
+      <a class="navbar-brand" href="{% url 'autos:index' %}">
+        <img src="{% static 'assets/IMG/Logo.webp' %}" alt="AUTOSDELMAR">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
         aria-controls="navbarda" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,21 +25,21 @@
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio
+            <a class="nav-link active" href="{% url 'autos:index' %}">Inicio
               <span class="visually-hidden">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./Acerca.html">Nosotros</a>
+            <a class="nav-link" href="{% url 'autos:acerca' %}">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./cuenta.html">Cuenta</a>
+            <a class="nav-link" href="{% url 'autos:cuenta' %}">Cuenta</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mantencion.html">Mantencion</a>
+            <a class="nav-link" href="{% url 'autos:mantencion' %}">Mantencion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./usuario/Productos.html">Productos</a>
+            <a class="nav-link" href="{% url 'autos:productos' %}">Productos</a>
           </li>
         </ul>
       </div>
@@ -51,25 +52,26 @@
         <div class="card">
             <h2 class="card-header text-center">Nueva Cuenta</h2>
             <div class="card-body">
-                <form id="myForm" onsubmit="return validar()">
+                <form id="myForm" method="post" action="{% url 'autos:registro' %}" onsubmit="return validar()">
+                    {% csrf_token %}
                     <div class="form-group">
                         <legend>Datos de la Cuenta</legend>
                         <label for="user">Usuario:</label>
-                        <input type="text" class="form-control" id="user" placeholder="Usuario">
+                        <input type="text" class="form-control" id="user" name="user" placeholder="Usuario">
                         <label for="email">Correo Electronico:</label>
-                        <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com">
                         <label for="Pass1">Contraseña:</label>
-                        <input type="password" class="form-control" id="pass1" placeholder="Contraseña">
+                        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Contraseña">
                         <label for="pass2">Rep. Contraseña:</label>
-                        <input type="password" class="form-control" id="pass2" placeholder="Repetir Contraseña">
+                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Repetir Contraseña">
                     </div>
 
                     <div class="form-group">
                         <legend>Datos Personales</legend>
                         <label for="sexo-masculino">Sexo:</label>
-                        <input type="radio" id="sexo-masculino" name="sexo"> Masculino
-                        <input type="radio" id="sexo-femenino" name="sexo"> Femenino <br>
-                        <input type="checkbox" id="terminos"> Acepto los términos y condiciones
+                        <input type="radio" id="sexo-masculino" name="sexo" value="masculino"> Masculino
+                        <input type="radio" id="sexo-femenino" name="sexo" value="femenino"> Femenino <br>
+                        <input type="checkbox" id="terminos" name="terminos"> Acepto los términos y condiciones
                     </div>
                     <input type="submit" class="btn btn-success" id="boton-registrar" value="Registrar">
                     <input type="reset" class="btn btn-danger" id="boton-reiniciar" value="Borrar todo">
@@ -82,7 +84,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="./assets/js/registrar.js"></script>
+    <script src="{% static 'assets/js/registrar.js' %}"></script>
 </body>
 
 </html>
