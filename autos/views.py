@@ -32,7 +32,10 @@ class ProductosView(View):
     
 class agregaView(View):
     def get(self, request):
-        return render(request, 'admin/agrega.html')
+        return render(request, 'autos/agrega.html')
+    
+def agrega(request):
+    return render(request, 'autos/agrega.html')
 
 def index(request):
     autos = Auto.objects.all()
