@@ -143,3 +143,15 @@ def kiacerato(request):
 
 def toyotacorolla(request):
     return render(request, 'toyotacorolla.html')
+
+def kawasaki(request):
+    return render(request, 'kawasaki.html')
+
+def yamaha(request):
+    return render(request, 'yamaha.html')
+
+def suzuki(request):
+    return render(request, 'suzuki.html')
+
+def honda(request):
+    return render(request, 'Honda.html')

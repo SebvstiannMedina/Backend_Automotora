@@ -30,4 +30,8 @@ urlpatterns = [
     path('hyundaielantra/', views.hyundaielantra, name='hyundaielantra'),
     path('kiacerato/', views.kiacerato, name='kiacerato'),
     path('toyotacorolla/', views.toyotacorolla, name='toyotacorolla'),
+    path('kawasaki/', views.kawasaki, name='kawasaki'),
+    path('yamaha/', views.yamaha, name='yamaha'),
+    path('suzuki/', views.suzuki, name='suzuki'),
+    path('honda/', views.honda, name='honda'),
 ]
