@@ -22,3 +22,4 @@ python manage.py runserver
 python manage.py migrate
 
 python manage.py createsuperuser -------> creacion de super usuarios PD: Usuario de prueba creado: Sebastian, Password: darkar26092002
+                                                                        Superuser: admin123@admin.cl - Password: 12358
