@@ -4,6 +4,8 @@ from django.contrib.auth import login, authenticate
 from .forms import RegistroForm
 from django.views import View
 from .models import Auto, Producto, Usuario
+from django.http import HttpResponse
+
 
 class RegistroMantenimientoView(View):
     def get(self, request):
@@ -201,3 +203,6 @@ def crear_usuario(request):
         return HttpResponse('Usuario creado correctamente')
     else:
         return render(request, 'registro.html')
+    
+def editar_perfil(request):
+    return render(request, 'editar_perfil.html')

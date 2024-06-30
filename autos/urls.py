@@ -37,4 +37,5 @@ urlpatterns = [
     path('yamaha/', views.yamaha, name='yamaha'),
     path('suzuki/', views.suzuki, name='suzuki'),
     path('honda/', views.honda, name='honda'),
+    path('editar_perfil/', views.editar_perfil, name='editar_perfil'),
 ]
