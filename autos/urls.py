@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
 from . import views
 
 app_name = 'autos'
@@ -15,9 +16,9 @@ urlpatterns = [
     path('hatchback/', views.hatchback, name='hatchback'),
     path('suv/', views.suv, name='suv'),
     path('noticias/', views.noticias, name='noticias'),
-    path('registro/', views.registro, name='registro'),  # Aquí está la corrección
+    path('registro/', RegistroView.as_view(), name='registro'),  # Cambiado a RegistroView
     path('apivalores/', views.apivalores, name='apivalores'),
-    path('productos/', views.ProductoListView.as_view(), name='productos'),
+    path('productos/', views.ProductoListView.as_view(), name='productos_list'),  # Cambiado a productos_list
     path('agrega/', views.agrega, name='agrega'),
     path('manage_product/', views.ManageProductView.as_view(), name='manage_product'),
     path('bmwx5/', views.bmwx5, name='bmwx5'),
@@ -26,7 +27,7 @@ urlpatterns = [
     path('toyotarav4/', views.toyotarav4, name='toyotarav4'),
     path('hyundaisantafe/', views.hyundaisantafe, name='hyundaisantafe'),
     path('hondacivic/', views.hondacivic, name='hondacivic'),
-    path('sedan/', views.sedan, name='sedan'),
+    path('sedan/', views.sedan, name='sedan'),  # Duplicado, deberías mantener uno
     path('hyundaielantra/', views.hyundaielantra, name='hyundaielantra'),
     path('kiacerato/', views.kiacerato, name='kiacerato'),
     path('toyotacorolla/', views.toyotacorolla, name='toyotacorolla'),

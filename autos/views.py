@@ -1,4 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate
+from .forms import RegistroForm
 from django.views import View
 from .models import Auto, Producto
 
@@ -155,3 +158,29 @@ def suzuki(request):
 
 def honda(request):
     return render(request, 'Honda.html')
+
+class RegistroView(View):
+    def get(self, request):
+        form = RegistroForm()
+        return render(request, 'registro.html', {'form': form})
+
+    def post(self, request):
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('autos:index')
+        return render(request, 'registro.html', {'form': form})
+
+class CuentaView(View):
+    def get(self, request):
+        form = AuthenticationForm()
+        return render(request, 'cuenta.html', {'form': form})
+
+    def post(self, request):
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('autos:index')
+        return render(request, 'cuenta.html', {'form': form})
