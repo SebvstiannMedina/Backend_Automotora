@@ -5,6 +5,8 @@ from .forms import RegistroForm
 from django.views import View
 from .models import Auto, Producto, Usuario
 from django.http import HttpResponse
+from django.http import JsonResponse
+from .models import Producto
 
 
 class RegistroMantenimientoView(View):
@@ -206,3 +208,4 @@ def crear_usuario(request):
     
 def editar_perfil(request):
     return render(request, 'editar_perfil.html')
+
