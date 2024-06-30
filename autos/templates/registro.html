@@ -2,66 +2,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="{% static 'assets/css/registro.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="{% static 'assets/css/registro.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <!--NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'autos:index' %}">
-                <img src="{% static 'assets/IMG/Logo.webp' %}" alt="AUTOSDELMAR">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'autos:index' %}">
+        <img src="{% static 'assets/img/Logo.webp' %}" alt="AUTOSDELMAR">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+        aria-controls="navbarda" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'autos:index' %}">Inicio
+              <span class="visually-hidden">(current)</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-                    aria-controls="navbarda" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'autos:index' %}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'autos:acerca' %}">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'autos:cuenta' %}">Cuenta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'autos:mantencion' %}">Mantencion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'autos:productos' %}">Productos</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!--REGISTRO-->
-    <br>
-    <div class="container" style="max-width: 650px; min-width: 400px;">
-        <div class="card">
-            <h2 class="card-header text-center">Nueva Cuenta</h2>
-            <div class="card-body">
-                <form method="post" action="{% url 'autos:registro' %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" class="btn btn-success" value="Registrar">
-                    <input type="reset" class="btn btn-danger" value="Borrar todo">
-                </form>
-            </div>
-        </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'autos:acerca' %}">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'autos:cuenta' %}">Cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'autos:mantencion' %}">Mantención</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'autos:productos' %}">Productos</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'assets/js/registrar.js' %}"></script>
+  <!-- REGISTRO -->
+  <main>
+    <div class="col-12 col-lg-4 offset-lg-4 panel h-100 py-5">
+      <div class="card">
+        <h1 class="card-title text-center mb-4">Registro</h1>
+        <form method="post" class="card-body">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" name="rut" id="rut" class="form-control" placeholder="RUT" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Teléfono" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electrónico" required>
+          </div>
+          <div class="form-group">
+            <input type="date" name="fNacimiento" id="fNacimiento" class="form-control" placeholder="Fecha de Nacimiento" required>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Registrarse" class="btn btn-primary w-100">
+          </div>
+        </form>
+        <div class="card-body">
+          <p class="text-center">¿Ya tienes una cuenta? <a href="{% url 'autos:cuenta' %}" id="iniciaSesion">Inicia sesión aquí</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="{% static 'assets/js/index.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGz5qYkP1U1K5xMwV5KkHu74p3Of6Y3kG7CpcpPT2P15T" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-QF1FfERnOXA4lh8u1aOsbk7Xu8W8a7FY8Coo5pGcdkuftnKKhGwE2U4Kr7I6bVG8" crossorigin="anonymous"></script>
 </body>
 </html>

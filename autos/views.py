@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from .forms import RegistroForm
 from django.views import View
-from .models import Auto, Producto
+from .models import Auto, Producto, Usuario
 
 class RegistroMantenimientoView(View):
     def get(self, request):
@@ -184,3 +184,20 @@ class CuentaView(View):
             login(request, user)
             return redirect('autos:index')
         return render(request, 'cuenta.html', {'form': form})
+    
+def crear_usuario(request):
+    if request.method == 'POST':
+        rut = request.POST.get('rut')
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        telefono = request.POST.get('telefono')
+        fNacimiento = request.POST.get('fNacimiento')
+        correo = request.POST.get('correo')
+        password = request.POST.get('password')
+
+        # Crear usuario
+        usuario = Usuario.objects.create_user(username=correo, rut=rut, nombre=nombre, apellido=apellido, telefono=telefono, fNacimiento=fNacimiento, correo=correo, password=password)
+        usuario.save()
+        return HttpResponse('Usuario creado correctamente')
+    else:
+        return render(request, 'registro.html')
