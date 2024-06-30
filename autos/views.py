@@ -209,3 +209,5 @@ def crear_usuario(request):
 def editar_perfil(request):
     return render(request, 'editar_perfil.html')
 
+def registro_mante(request):
+    return render(request, 'registro_mante.html')
