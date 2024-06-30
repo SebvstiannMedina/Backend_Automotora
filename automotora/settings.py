@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'automotora.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'orcl',  # Nombre del servicio de tu base de datos Oracle
+        'NAME': 'XE',  # Nombre del servicio de tu base de datos Oracle
         'USER': 'ADMIN123',
         'PASSWORD': '12358',
         'HOST': '127.0.0.1',
@@ -128,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'autos', 'assets'),  # Ruta a tus archivos estáticos (CSS, JS, imágenes, etc.)
+    os.path.join(BASE_DIR, 'autos', 'static' ,'assets'),  # Ruta a tus archivos estáticos (CSS, JS, imágenes, etc.)
 ]
 
 # Configuración para archivos estáticos en producción
