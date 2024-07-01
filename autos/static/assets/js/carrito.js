@@ -107,7 +107,7 @@ function mostrarElementosLista() {
             <div>
                 <div class="img">
                     <button onclick="eliminar(${i})" class="botonTrash">
-                        <img src="{% static 'assets/IMG/trash.png' %}" alt="Eliminar">
+                        <img src="../assets/img/trash.png" alt="Eliminar">
                     </button>
                     <p>${lista[i].nombre}</p>
                 </div>
