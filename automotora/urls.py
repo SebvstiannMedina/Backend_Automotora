@@ -19,7 +19,8 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('autos.urls')),  # Ruta raíz vacía redirige a autos.urls
-    # Añade aquí más paths según tus necesidades
+    path('', include('autos.urls')),
+    path('autenticacion/', include('autenticacion.urls')),
+
 ]
 

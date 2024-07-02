@@ -44,14 +44,11 @@
     </div>
   </nav>
 
-  <!-- REGISTRO -->
-   <!--mi pregunta es pruebao a crear otro con datos distintos?-->
-   <!--No ya que si ya existe deberia dar error pero mira el error tuyo -->
   <main>
     <div class="col-12 col-lg-4 offset-lg-4 panel h-100 py-5">
       <div class="card">
         <h1 class="card-title text-center mb-4">Registro</h1>
-        <form method="post" class="card-body" action="{% url 'crear_usuario' %}">
+        <form method="post" class="card-body" action="">
           {% csrf_token %}
           <div class="form-group">
             <input type="text" name="rut" id="rut" class="form-control" placeholder="RUT" required>
