@@ -39,4 +39,5 @@ urlpatterns = [
     path('honda/', views.honda, name='honda'),
     path('editar_perfil/', views.editar_perfil, name='editar_perfil'),
     path('registro_mante/', views.registro_mante, name='registro_mante'),
+    path('registrarse/', views.viewReg, name='registrarse'),
 ]
