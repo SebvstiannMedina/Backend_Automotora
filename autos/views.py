@@ -120,9 +120,6 @@ class ManageProductView(View):
 
         return redirect('autos:producto_list')
     
-def registro(request):
-    return render(request, 'registro.html')
-
 def bmwx5(request):
     return render(request, 'bmwx5.html')
 
@@ -239,3 +236,9 @@ def editar_perfil(request):
 
 def registro_mante(request):
     return render(request, 'registro_mante.html')
+
+def logear(request):
+    return render(request, 'logear.html')
+
+def Autenticacion(request):
+    return render(request, 'Autenticacion.html')

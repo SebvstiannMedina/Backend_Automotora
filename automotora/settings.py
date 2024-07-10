@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'autos', 'static' ,'assets'),  # Ruta a tus archivos estáticos (CSS, JS, imágenes, etc.)
+    os.path.join(BASE_DIR, 'autos', 'static' ,'assets', 'autenticacion'),  # Ruta a tus archivos estáticos (CSS, JS, imágenes, etc.)
 ]
 
 # Configuración para archivos estáticos en producción

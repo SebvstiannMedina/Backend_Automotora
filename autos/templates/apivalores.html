@@ -1,4 +1,8 @@
+{% extends 'base.html' %}
+
 {% load static %}
+
+{% block content%}
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,40 +19,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/apivalor.css' %}">
 </head>
 
-<body>
-   <!--NAVBAR -->
-  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'autos:index' %}">
-        <img src="{% static 'assets/IMG/Logo.webp' %}" alt="AUTOSDELMAR">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-        aria-controls="navbarda" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'autos:index' %}">Inicio
-              <span class="visually-hidden">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:acerca' %}">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:cuenta' %}">Cuenta</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:mantencion' %}">Mantencion</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:productos' %}">Productos</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
+   
 
     <div class="container mt-5">
         <h1 class="text-center mb-4">Valores Financieros</h1>
@@ -80,6 +52,9 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+4lnt/smI4lZT+LbDVCSTou3lE4D2" crossorigin="anonymous">
     </script>
     <script src="{% static 'assets/js/apivalor.js' %}"></script>
-</body>
 
-</html>
+{% endblock %}
+
+
+
+

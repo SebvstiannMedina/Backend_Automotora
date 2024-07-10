@@ -35,7 +35,7 @@ class VRegistro(View):
 def close_session(request):
     logout(request)
     
-    return redirect('Home')
+    return redirect('login')
 
 def logear(request):
     form = AuthenticationForm()
@@ -49,7 +49,7 @@ def logear(request):
             
             if usuario is not None:
                 login(request, usuario)
-                return redirect('Home')
+                return redirect('index')
             else:
                 messages.error(request, "Usuario no válido")
         else:
