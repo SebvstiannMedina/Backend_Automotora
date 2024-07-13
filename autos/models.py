@@ -3,6 +3,7 @@ import uuid
 # Create your models here.
 from django.db import models
 
+
 class Region(models.Model):
     idRegion = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, null=False, blank=False)
@@ -65,3 +66,4 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
+    

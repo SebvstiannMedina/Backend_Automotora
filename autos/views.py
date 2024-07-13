@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from .forms import RegistroForm
 from django.views import View
 from .models import Auto, Producto, Usuario
@@ -9,6 +9,16 @@ from django.http import JsonResponse
 from .models import Producto
 #este import se usa para los modelos de autorizacion de django 
 from django.contrib.auth.models import User
+from django.shortcuts import render
+from .models import Producto
+from django.shortcuts import render, redirect
+from django.views import View
+from .models import Producto
+from django.shortcuts import render, redirect
+from django.views import View
+from .models import Producto
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class RegistroMantenimientoView(View):
@@ -38,11 +48,11 @@ class MantencionView(View):
 class ProductosView(View):
     def get(self, request):
         return render(request, 'usuario/productos.html')
-    
+
 class agregaView(View):
     def get(self, request):
         return render(request, 'autos/agrega.html')
-    
+
 def agrega(request):
     return render(request, 'autos/agrega.html')
 
@@ -73,7 +83,12 @@ def acerca(request):
     return render(request, 'acerca.html')
 
 def cuenta(request):
-    return render(request, 'cuenta.html')
+    if request.method == 'POST':
+        logout(request)
+        return redirect('index')  # redirige a la página de inicio de sesión o donde desees
+    else:
+        form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})
 
 def registro_mantenimiento(request):
     if request.method == 'POST':
@@ -85,27 +100,29 @@ def apivalores(request):
     return render(request, 'apivalores.html')
 
 def productos(request):
-    return render(request, 'usuario/productos.html')
+    productos = Producto.objects.all() 
+    return render(request, 'usuario/productos.html', {'productos': productos})
 
 def agrega(request):
-    return render(request, 'admin/agrega.html')
+    productos = Producto.objects.all()
+    return render(request, 'admin/agrega.html', {'productos': productos})
 
 class ProductoListView(View):
     def get(self, request):
         productos = Producto.objects.all()
-        return render(request, 'agregar_editar_eliminar.html', {'productos': productos})
+        return render(request, 'admin/agrega.html', {'productos': productos})
 
 class ManageProductView(View):
     def post(self, request):
         action = request.POST.get('action')
-        
+
         if action == 'add':
             nombre = request.POST.get('nombre_del_producto')
             valor = request.POST.get('valor_del_producto')
             existencia = request.POST.get('existencia_del_producto')
             url_imagen = request.POST.get('url_imagen')
             Producto.objects.create(nombre=nombre, valor=valor, existencia=existencia, url_imagen=url_imagen)
-        
+
         elif action == 'edit':
             producto_id = request.POST.get('producto_a_editar')
             atributo = request.POST.get('atributo_a_editar')
@@ -113,12 +130,12 @@ class ManageProductView(View):
             producto = Producto.objects.get(id=producto_id)
             setattr(producto, atributo, nuevo_valor)
             producto.save()
-        
+
         elif action == 'delete':
             producto_id = request.POST.get('producto_a_eliminar')
             Producto.objects.get(id=producto_id).delete()
 
-        return redirect('autos:producto_list')
+        return redirect('autos:productos_list')
     
 def bmwx5(request):
     return render(request, 'bmwx5.html')
@@ -242,3 +259,7 @@ def logear(request):
 
 def Autenticacion(request):
     return render(request, 'Autenticacion.html')
+
+def mostrar_productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'usuario/productos.html', {'productos': productos})

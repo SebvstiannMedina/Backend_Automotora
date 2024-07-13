@@ -2,8 +2,9 @@ from django.shortcuts import render , redirect
 from django.views.generic import View
 from django.contrib.auth import login , logout , authenticate
 from django.contrib import messages
-
 from django.contrib.auth.forms import UserCreationForm ,  AuthenticationForm
+from django.contrib.auth import logout
+from django.shortcuts import render, redirect
                                                          
 
 # Create your views here.
@@ -25,7 +26,7 @@ class VRegistro(View):
                 
             login(request, usuario)
         
-            return redirect('Home')
+            return redirect('index')
         else:
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])
@@ -34,8 +35,7 @@ class VRegistro(View):
 
 def close_session(request):
     logout(request)
-    
-    return redirect('login')
+    return redirect('autos:index')
 
 def logear(request):
     form = AuthenticationForm()

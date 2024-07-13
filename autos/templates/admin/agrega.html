@@ -52,6 +52,7 @@
       </div>
     </div>
   </nav>
+  {% if user.is_authenticated %}
 
   <header id="header">
     <h1>Agregar, Editar, Eliminar</h1>
@@ -63,19 +64,19 @@
       <div class="añadir">
         <h2>Añadir</h2>
         <form method="post" action="{% url 'autos:manage_product' %}">
-          {% csrf_token %}
-          <label>Nombre del producto</label>
-          <input type="text" id="productoAñadir" name="nombre_del_producto" required>
-          <label>Valor del producto</label>
-          <input type="number" id="valorAñadir" name="valor_del_producto" required>
-          <label>Existencia</label>
-          <input type="number" id="existenciaAñadir" name="existencia_del_producto" required>
-          <label>Url Imagen</label>
-          <input type="text" id="ImagenAñadir" name="url_imagen" required>
-          <input type="hidden" name="action" value="add">
-          <input class="button" type="submit" id="botonAñadir" value="Añadir">
+            {% csrf_token %}
+            <label>Nombre del producto</label>
+            <input type="text" name="nombre_del_producto" required>
+            <label>Valor del producto</label>
+            <input type="number" name="valor_del_producto" required>
+            <label>Existencia</label>
+            <input type="number" name="existencia_del_producto" required>
+            <label>Url Imagen</label>
+            <input type="text" name="url_imagen" required>
+            <input type="hidden" name="action" value="add">
+            <input class="button" type="submit" value="Añadir">
         </form>
-      </div>
+    </div>
       <!-- Editar -->
       <div class="editar">
         <h2>Editar</h2>
@@ -83,7 +84,7 @@
           {% csrf_token %}
           <label>Nombre del producto</label>
           <select id="productoEditar" name="producto_a_editar" required>
-            <option value="">---</option>
+            <option value="">Selecciona una opción</option>
             {% for producto in productos %}
             <option value="{{ producto.id }}">{{ producto.nombre }}</option>
             {% endfor %}
@@ -117,25 +118,30 @@
           <input class="button" type="submit" id="botonEliminar" value="Eliminar">
         </form>
       </div>
-    </div>
-    <!-- Mostrar el mensaje -->
-    <div class="contenedorMensaje">
-      <div id="mensaje"></div>
+
     </div>
     <!-- Productos -->
     <div class="contenedorProductos">
       <h2>Productos</h2>
-      <div class="mostrarProductos" id="mostrarProductos">
-        {% for producto in productos %}
-        <div>
-          <h3>{{ producto.nombre }}</h3>
-          <p>Valor: {{ producto.valor }}</p>
-          <p>Existencia: {{ producto.existencia }}</p>
-          <img src="{{ producto.url_imagen }}" alt="{{ producto.nombre }}">
-        </div>
-        {% endfor %}
-      </div>
-    </div>
+        <ul>
+          <div class="mostrarProductos" id="mostrarProductos"></div>
+            {% for producto in productos %}
+              <div class="mostrarProductos" id="mostrarProductos">
+                <div>
+                  <img src="{{ producto.url_imagen }}">
+                    <h3 style="text-align: center;">{{ producto.nombre }}</h3>
+                    <p style="text-align: center;">Valor: {{ producto.valor }}</p>
+                    <p style="text-align: center;">Existencia: {{ producto.existencia }}</p>
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <h1 style="color: white;">Inicia sesión para acceder al CRUD</h1>
+                {% endif %}
+              </div>
+              </ul>
+            </div>
+          </div>
   </main>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
