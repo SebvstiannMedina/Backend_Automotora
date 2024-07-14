@@ -19,40 +19,53 @@
 </head>
 
 <body>
-  <!--NAVBAR -->
+  
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'autos:index' %}">
-        <img src="{% static 'assets/IMG/Logo.webp' %}" alt="AUTOSDELMAR">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-        aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'autos:index' %}">Inicio
-              <span class="visually-hidden">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:acerca' %}">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:cuenta' %}">Cuenta</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:mantencion' %}">Mantencion</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:productos' %}">Productos</a>
-          </li>
-        </ul>
-      </div>
+        <a class="navbar-brand" href="{% url 'autos:index' %}">
+            <img src="{% static 'assets/img/Logo.webp' %}" alt="AUTOSDELMAR">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+            aria-controls="navbarda" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'autos:index' %}">Inicio
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'autos:acerca' %}">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                <li></i> Hola {{user.username}} &nbsp;&nbsp; <a href="{% url 'close_session' %}"
+                        style="color:white;"> <br> Cerrar sesión</a></li>
+                        {% else %}
+                        <p>que haces aqui ???</p>
+                        {% endif %}
+                        {% else %}
+                        <a class="nav-link" href="{% url 'autos:cuenta' %}">Cuenta</a>
+                {% endif %}
+               
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'autos:mantencion' %}">Mantención</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'autos:productos' %}">Productos</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </nav>
-  {% if user.is_authenticated %}
+</nav>
+
+{% if user.is_authenticated %}
+  {% if user.is_superuser %}
 
   <header id="header">
     <h1>Agregar, Editar, Eliminar</h1>
@@ -135,14 +148,28 @@
                 </div>
                 {% endfor %}
 
-                {% else %}
-                <h1 style="color: white;">Inicia sesión para acceder al CRUD</h1>
-                {% endif %}
               </div>
               </ul>
             </div>
           </div>
+    </div>
   </main>
+
+  <!--fuin                                       -->
+
+
+        {% else %}
+        <h1>Bienvenido, {{ user.username }}&nbsp;&nbsp; </h1>
+          <h2 style="color: white; background-color: black;">Tu no eres administrador sal de aca >:v</h2>
+      
+      {% endif %}
+ {% else %}
+ <h1 style="color: white;">Inicia sesión para acceder al CRUD</h1>
+
+{% endif %}
+
+
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
