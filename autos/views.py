@@ -20,7 +20,6 @@ from .models import Producto
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
 class RegistroMantenimientoView(View):
     def get(self, request):
         registros = [
@@ -263,3 +262,4 @@ def Autenticacion(request):
 def mostrar_productos(request):
     productos = Producto.objects.all()
     return render(request, 'usuario/productos.html', {'productos': productos})
+

@@ -12,86 +12,97 @@
 </head>
 
 <body>
-  <!--NAVBAR -->
+  
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'autos:index' %}">
-        <img src="{% static 'assets/IMG/Logo.webp' %}" alt="AUTOSDELMAR">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-        aria-controls="navbarda" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'autos:index' %}">Inicio
-              <span class="visually-hidden">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:acerca' %}">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:cuenta' %}">Cuenta</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:mantencion' %}">Mantención</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'autos:productos' %}">Productos</a>
-          </li>
-        </ul>
-      </div>
+        <a class="navbar-brand" href="{% url 'autos:index' %}">
+            <img src="{% static 'assets/img/Logo.webp' %}" alt="AUTOSDELMAR">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+            aria-controls="navbarda" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'autos:index' %}">Inicio
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'autos:acerca' %}">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                <li></i> Hola {{user.username}} &nbsp;&nbsp; <a href="{% url 'close_session' %}"
+                        style="color:white;"> <br> Cerrar sesión</a></li>
+                {% else %}
+                <p>que haces aqui ???</p>
+                {% endif %}
+                {% else %}
+                <a class="nav-link" href="{% url 'autos:cuenta' %}">Cuenta</a>
+                {% endif %}
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'autos:mantencion' %}">Mantención</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'autos:productos' %}">Productos</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
   
 
-  <!--Productos-->
-  <div class="container">
-    <h1>Autos sedan que puedes encontrar.</h1>
+  <!--Productos-->>
+    <div class="container">
+        <h1>Autos sedan que puedes encontrar</h1>
 
-    <div class="product">
-      <img src="{% static 'assets/IMG/hondacivic.jpg' %}" alt="Honda Civic">
-      <h2>Honda Civic</h2>
-      <p>Precio: $24.890.000</p>
-      <p>Descripción: Un símbolo de confiabilidad y estilo. Con frenos ABS para una conducción segura en todo momento.
-        Experimenta la emoción de la carretera con la combinación perfecta de rendimiento y elegancia en el Honda Civic
-      </p>
-      <button class="buy-button btn btn-success" data-product="1">Cotizar</button>
-      <a href="{% url 'autos:hondacivic' %}" class="btn btn-primary">Ver Detalles</a>
-    </div>
+        <div class="product">
+          <img src="{% static 'assets/IMG/hondacivic.jpg' %}" alt="Honda Civic">
+          <h2>Honda Civic</h2>
+          <p>Precio: $24.890.000</p>
+          <p>Descripción: Un símbolo de confiabilidad y estilo. Con frenos ABS para una conducción segura en todo momento.
+            Experimenta la emoción de la carretera con la combinación perfecta de rendimiento y elegancia en el Honda Civic
+          </p>
+          <button class="buy-button btn btn-success" data-product="1">Cotizar</button>
+          <a href="{% url 'autos:hondacivic' %}" class="btn btn-primary">Ver Detalles</a>
+        </div>
 
-    <div class="product">
-      <img src="{% static 'assets/IMG/hyundaielantra.jpg' %}" alt="Hyundai Elantra">
-      <h2>Hyundai Elantra</h2>
-      <p>Precio: $18.200.000</p>
-      <p>Descripción: Elegancia y rendimiento en un vehículo compacto. Con frenos ABS para una conducción segura en cada
-        viaje. Descubre la armonía entre estilo y tecnología en el Hyundai Elantra.</p>
-      <button class="buy-button btn btn-success" data-product="2">Cotizar</button>
-      <a href="{% url 'autos:hyundaielantra' %}" class="btn btn-primary">Ver Detalles</a>
+        <div class="product">
+          <img src="{% static 'assets/IMG/hyundaielantra.jpg' %}" alt="Hyundai Elantra">
+          <h2>Hyundai Elantra</h2>
+          <p>Precio: $18.200.000</p>
+          <p>Descripción: Elegancia y rendimiento en un vehículo compacto. Con frenos ABS para una conducción segura en cada
+            viaje. Descubre la armonía entre estilo y tecnología en el Hyundai Elantra.</p>
+          <button class="buy-button btn btn-success" data-product="2">Cotizar</button>
+          <a href="{% url 'autos:hyundaielantra' %}" class="btn btn-primary">Ver Detalles</a>
+        </div>
+    
+        <div class="product">
+          <img src="{% static 'assets/IMG/kiacerato.jpg' %}" alt="Kia Cerato">
+          <h2>Kia Cerato</h2>
+          <p>Precio: $18.750.000</p>
+          <p>Descripción: Sofisticación y dinamismo en un sedán compacto. Equipado con frenos ABS para una conducción segura
+            en todas las condiciones. Descubre el equilibrio perfecto entre estilo y rendimiento con el Kia Cerato.</p>
+          <button class="buy-button btn btn-success" data-product="3">Cotizar</button>
+          <a href="{% url 'autos:kiacerato' %}" class="btn btn-primary">Ver Detalles</a>
+        </div>
+    
+        <div class="product">
+          <img src="{% static 'assets/IMG/toyotacorolla.jpg' %}" alt="Toyota Corolla">
+          <h2>Toyota Corolla</h2>
+          <p>Precio: $19.500.000</p>
+          <p>Descripción: Un ícono de confiabilidad y eficiencia. Con frenos ABS para una conducción segura en cualquier
+            situación. Experimenta la calidad y durabilidad legendaria de Toyota en el Toyota Corolla.</p>
+          <button class="buy-button btn btn-success" data-product="4">Cotizar</button>
+          <a href="{% url 'autos:toyotacorolla' %}" class="btn btn-primary">Ver Detalles</a>
+        </div>
     </div>
-
-    <div class="product">
-      <img src="{% static 'assets/IMG/kiacerato.jpg' %}" alt="Kia Cerato">
-      <h2>Kia Cerato</h2>
-      <p>Precio: $18.750.000</p>
-      <p>Descripción: Sofisticación y dinamismo en un sedán compacto. Equipado con frenos ABS para una conducción segura
-        en todas las condiciones. Descubre el equilibrio perfecto entre estilo y rendimiento con el Kia Cerato.</p>
-      <button class="buy-button btn btn-success" data-product="3">Cotizar</button>
-      <a href="{% url 'autos:kiacerato' %}" class="btn btn-primary">Ver Detalles</a>
-    </div>
-
-    <div class="product">
-      <img src="{% static 'assets/IMG/toyotacorolla.jpg' %}" alt="Toyota Corolla">
-      <h2>Toyota Corolla</h2>
-      <p>Precio: $19.500.000</p>
-      <p>Descripción: Un ícono de confiabilidad y eficiencia. Con frenos ABS para una conducción segura en cualquier
-        situación. Experimenta la calidad y durabilidad legendaria de Toyota en el Toyota Corolla.</p>
-      <button class="buy-button btn btn-success" data-product="4">Cotizar</button>
-      <a href="{% url 'autos:toyotacorolla' %}" class="btn btn-primary">Ver Detalles</a>
-    </div>
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
